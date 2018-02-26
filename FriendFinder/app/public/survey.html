@@ -176,6 +176,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Your new bestie is!...</h4>
+                    <p>*not able to get req.body.scores to populate in apiRoutes to perform calculation</p>
                 </div>
                 <div class="modal-body" id="friendName">
                 </div>
@@ -192,7 +193,6 @@
     $("#submit").on("click", function(event) {
       event.preventDefault();
 
-      
 
     function validForm() {
       var formFill = true;
@@ -225,7 +225,9 @@
       console.log(newFriend);
       $('#myModal').modal();
 
-      $.post("/api/fiends", newFriend,
+      var currentURL = window.location.origin;
+
+      $.post(currentURL + "/api/friends", newFriend,
         function(data) {
 
           $("#friendName").text(data.name);
